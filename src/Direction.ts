@@ -1,7 +1,5 @@
-type DirectionType = "north" | "south" | "east" | "west";
+export type Direction = "north" | "south" | "east" | "west";
 
-export default class Direction {
-  constructor(private value: DirectionType) {}
-
-  // isValidDirection()
+export function isValidDirection(direction: Direction): boolean {
+  return false;
 }

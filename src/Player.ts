@@ -1,4 +1,6 @@
+import type { Direction } from "./Direction.js";
 import type Item from "./Item.js";
+import type Room from "./Room.js";
 
 let posX;
 let posY;
@@ -11,9 +13,15 @@ export function inventoryWeight(): number {
   return 0;
 }
 
-// move()
-// pickupItem()
-// dropItem()
-// showInventory()
-// getCurrentRoom() - to abstract the room coordinates
-// getInventoryItem()
+export function move(direction: Direction): void {}
+export function pickupItem(itemName: string): void {}
+export function dropItem(itemName: string): void {}
+export function showInventory(): void {}
+
+// / to abstract the room coordinates
+export function getCurrentRoom(): Room | null {
+  return null;
+}
+export function getInventoryItem(itemName: string): Item | null {
+  return null;
+}

@@ -1,3 +1,4 @@
+import type { Direction } from "./Direction.js";
 import type Item from "./Item.js";
 
 export default class Room {
@@ -5,20 +6,33 @@ export default class Room {
     readonly title: string,
     readonly description: string,
     private exits: string[],
-    private items:Item[]
+    private items: Item[],
   ) {}
-  // Public methods
 
-  // describe()
-  // showTitle()
+  public describe(): void {}
+
+  public showTitle(): void {}
+
   // getItem() - see if a room has an item
-  // addExit()
-  // removeExit()
-  // canExit()
+  public getItem(itemName: string): Item | null {
+    return null;
+  }
+
+  public addExit(direction: Direction): void {}
+  public removeExit(direction: Direction): void {}
+  public canExit(direction: Direction): boolean {
+    return false;
+  }
 
   // Private Methods
-  // getItemList()
-  // getExitList()
+  private getItemList(): string {
+    return "";
+  }
+  private getExitList(): string {
+    return "";
+  }
 
-  // getCoordinates()
+  private getCoordinates(): string {
+    return "";
+  }
 }
