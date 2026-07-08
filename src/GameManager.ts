@@ -1,12 +1,13 @@
-export function showTitleScreen(): void {
+function showTitleScreen(): void {
   console.log("Welcome to Hyperion");
 }
-export function startGame():void {
+function startGame(): void {}
+function endGame(): void {}
+function applyRules(): void {}
 
-}
-export function endGame():void {
-
-}
-export function applyRules(): void {
-
-}
+export default {
+  showTitleScreen,
+  startGame,
+  endGame,
+  applyRules,
+};

@@ -1,5 +1,12 @@
-export type Direction = "north" | "south" | "east" | "west";
+const DirectionTypes = {
+  north: "north",
+  south: "south",
+  east: "east",
+  west: "west",
+} as const;
 
-export function isValidDirection(direction: Direction): boolean {
-  return false;
+export type Direction = keyof typeof DirectionTypes;
+
+export function isValidDirection(direction: string): direction is Direction {
+  return Object.keys(DirectionTypes).includes(direction);
 }
