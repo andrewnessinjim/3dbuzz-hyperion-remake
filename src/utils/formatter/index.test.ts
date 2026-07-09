@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import Item from "../Item.js";
-import type { Direction } from "../Direction.js";
-import { formatItemList, formatDirections } from "./internal.js";
+import Item from "../../Item.js";
+import type { Direction } from "../../Direction.js";
+import { formatItemList, formatDirections } from "./index.js";
 
-describe("Room internal", () => {
+describe("Formatter", () => {
   describe("formatItemList", () => {
     it("Formats valid items into a representable string format", () => {
       const items = [
@@ -11,15 +11,14 @@ describe("Room internal", () => {
         new Item("Shield", "A sturdy shield"),
       ];
 
-      const actual = formatItemList(items);
-      const expected =
-        "\nItems in Room:\n--------------\n[Sword]\n[Shield]";
+      const actual = formatItemList(items, "Items in Room");
+      const expected = "\nItems in Room:\n--------------\n[Sword - Wt: 1]\n[Shield - Wt: 1]";
 
       expect(actual).toBe(expected);
     });
 
     it("Formats an empty item list", () => {
-      const actual = formatItemList([]);
+      const actual = formatItemList([], "Items in Room");
       const expected = "\nItems in Room:\n--------------\n<none>";
 
       expect(actual).toBe(expected);

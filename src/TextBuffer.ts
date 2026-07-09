@@ -1,4 +1,4 @@
-import * as TextUtils from "./TextUtils/index.js";
+import * as TextUtils from "./utils/text/index.js";
 
 let outputBuffer: string = "";
 

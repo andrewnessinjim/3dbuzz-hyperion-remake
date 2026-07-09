@@ -1,10 +1,10 @@
-import type { Direction } from "../Direction.js";
-import type Item from "../Item.js";
+import type { Direction } from "../../Direction.js";
+import type Item from "../../Item.js";
 
-export function formatItemList(items: Item[]): string {
+export function formatItemList(items: Item[], title: string): string {
   return formatList(
-    items.map((item) => item.title),
-    "Items in Room",
+    items.map((item) => item.title + " - " + "Wt: " + item.weight),
+    title,
   );
 }
 

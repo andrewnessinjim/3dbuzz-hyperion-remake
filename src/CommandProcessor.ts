@@ -1,5 +1,5 @@
 import { quit } from "./index.js";
-import * as TextUtils from "./TextUtils/index.js";
+import * as TextUtils from "./utils/text/index.js";
 import Player from "./Player.js";
 import { isValidDirection } from "./Direction.js";
 import TextBuffer from "./TextBuffer.js";

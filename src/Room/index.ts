@@ -3,7 +3,7 @@ import type Item from "../Item.js";
 import { getRoomCoordinates } from "../Level.js";
 import TextBuffer from "../TextBuffer.js";
 import type { Nullable } from "../types/index.js";
-import { formatDirections, formatItemList } from "./internal.js";
+import { formatDirections, formatItemList } from "../utils/formatter/index.js";
 
 export default class Room {
   constructor(
@@ -32,6 +32,14 @@ export default class Room {
     return foundItem || null;
   }
 
+  public removeItem(itemAdd: Item): void {
+    this.items = this.items.filter((item) => item !== itemAdd);
+  }
+
+  public addItem(itemAdd: Item): void {
+    this.items.push(itemAdd);
+  }
+
   public addExit(direction: Direction): void {
     this.exits.add(direction);
   }
@@ -46,7 +54,7 @@ export default class Room {
 
   // Private Methods
   private getItemList(): string {
-    return formatItemList(this.items);
+    return formatItemList(this.items, "Items in Room");
   }
 
   private getExitList(): string {

@@ -38,7 +38,7 @@ describe("Room", () => {
       );
       expect(TextBuffer.add).toHaveBeenNthCalledWith(
         2,
-        "\nItems in Room:\n--------------\n[Sword]",
+        "\nItems in Room:\n--------------\n[Sword - Wt: 1]",
       );
       expect(TextBuffer.add).toHaveBeenNthCalledWith(
         3,
