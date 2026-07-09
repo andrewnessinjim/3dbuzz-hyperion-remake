@@ -1,6 +1,6 @@
 import type { Direction } from "./Direction.js";
 import type Item from "./Item.js";
-import type Room from "./Room.js";
+import type Room from "./Room/index.js";
 
 let posX;
 let posY;

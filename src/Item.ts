@@ -1,7 +1,7 @@
 export default class Item {
   constructor(
-    private title: string,
-    private pickupText: string,
-    private weight: number = 1,
+    readonly title: string,
+    readonly pickupText: string,
+    readonly weight: number = 1,
   ) {}
 }
