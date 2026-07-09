@@ -25,12 +25,11 @@ export default class Room {
 
   // getItem() - see if a room has an item
   public getItem(itemName: string): Nullable<Item> {
-    for (let item of this.items) {
-      if (item.title.toLowerCase() === itemName.toLowerCase()) {
-        return item;
-      }
-    }
-    return null;
+    const foundItem = this.items.find(
+      (item) => item.title.toLowerCase() === itemName.toLowerCase(),
+    );
+
+    return foundItem || null;
   }
 
   public addExit(direction: Direction): void {
