@@ -3,10 +3,12 @@ import type Item from "./Item.js";
 import { getRoom } from "./Level.js";
 import type Room from "./Room/index.js";
 import TextBuffer from "./TextBuffer.js";
+import type { Nullable } from "./types/index.js";
 import { formatItemList } from "./utils/formatter/index.js";
 
-let posX = 0;
-let posY = 0;
+
+export const position = { x: 0, y: 0 };
+
 let inventory: Item[] = [];
 let moves = 0;
 let weightCapacity = 6;
@@ -30,16 +32,16 @@ function move(direction: Direction): void {
 
   switch (direction) {
     case "north":
-      posY--;
+      position.y--;
       break;
     case "south":
-      posY++;
+      position.y++;
       break;
     case "east":
-      posX++;
+      position.x++;
       break;
     case "west":
-      posX--;
+      position.x--;
       break;
   }
 
@@ -80,15 +82,15 @@ function dropItem(itemName: string): void {
 }
 function showInventory(): void {
   const itemsText = formatItemList(inventory, "You inventory contains");
-  const totalWeightText = `\n\nTotal Wt: ${inventoryWeight() / weightCapacity}`;
+  const totalWeightText = `\n\nTotal Wt: ${inventoryWeight()} / ${weightCapacity}`;
 
   const inventoryText = itemsText + totalWeightText;
   TextBuffer.add(inventoryText);
 }
 
 // / to abstract the room coordinates
-function getCurrentRoom(): Room {
-  return getRoom(posX, posY);
+function getCurrentRoom(): Nullable<Room> {
+  return getRoom(position.x, position.y);
 }
 function getInventoryItem(itemName: string): Item | null {
   const found = inventory.find(

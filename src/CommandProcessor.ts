@@ -27,8 +27,10 @@ export function processCommand(line: string): void {
       break;
     case "pickup":
       Player.pickupItem(argument);
+      break;
     case "drop":
       Player.dropItem(argument);
+      break;
     case "inventory":
       Player.showInventory();
       break;

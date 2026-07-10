@@ -55,7 +55,7 @@ async function showTitleScreen(): Promise<void> {
 }
 
 function startGame(): void {
-  Player.getCurrentRoom().describe();
+  Player.getCurrentRoom()?.describe();
   TextBuffer.show();
 }
 

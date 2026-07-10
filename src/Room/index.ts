@@ -9,8 +9,8 @@ export default class Room {
   constructor(
     readonly title: string,
     readonly description: string,
-    private exits: Set<Direction>,
-    private items: Item[],
+    private exits: Set<Direction> = new Set<Direction>(),
+    private items: Item[] = [],
   ) {}
 
   public describe(): void {

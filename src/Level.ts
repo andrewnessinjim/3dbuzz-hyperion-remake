@@ -1,8 +1,28 @@
-import type Room from "./Room/index.js";
+import Item from "./Item.js";
+import Player, { position } from "./Player.js";
+import Room from "./Room/index.js";
 
 let roomGrid!: Room[][];
 
-function buildLevel(): void {}
+function buildLevel(): void {
+  const redRoom = new Room("Red Room", "You just entered the red room.");
+  redRoom.addItem(
+    new Item(
+      "Eaten apple",
+      "looks like an half-eaten apple. It looks fresh. Someone was definitely enjoying this!",
+      2,
+    ),
+  );
+  redRoom.addExit("east");
+
+  const blueRoom = new Room("Blue Room", "You have entered the blue room");
+  blueRoom.addExit("west");
+
+  roomGrid = [[redRoom, blueRoom]];
+
+  position.x = 0;
+  position.y = 0;
+}
 export function getRoomGrid() {
   return roomGrid;
 }
@@ -43,6 +63,8 @@ export function getRoom(posX: number, posY: number): Room {
 }
 
 // initialize - create the rooms, items, place the items in room and place the player in one of the rooms
-export function init(): void {}
+export function init(): void {
+  buildLevel();
+}
 
 // buildLevel
