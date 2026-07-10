@@ -5,12 +5,13 @@ import chalk from "chalk";
 
 export let quit: { value: boolean } = { value: false };
 
+console.clear();
+await GameManager.showTitleScreen();
+
 const rl = createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-console.clear();
-GameManager.showTitleScreen();
 
 while (!quit.value) {
   const userInput = await rl.question(chalk.bold("What shall I do?\n> "));

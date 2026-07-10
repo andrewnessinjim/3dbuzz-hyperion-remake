@@ -12,6 +12,7 @@ export function extractArguments(line: string): string {
   return line.substring(separatorIndex + 1);
 }
 
-export function wordWrap(text: string, bufferWidth: number): string {
+export function wordWrap(text: string): string {
+  //process.stdout.columns
   return text;
 }

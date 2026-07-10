@@ -9,7 +9,7 @@ function add(text: string): void {
 function show(): void {
   console.clear();
   process.stdout.write(
-    TextUtils.wordWrap(outputBuffer, process.stdout.columns),
+    TextUtils.wordWrap(outputBuffer),
   );
 
   outputBuffer = "";
