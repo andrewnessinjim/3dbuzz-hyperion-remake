@@ -8,7 +8,7 @@ import { formatDirections, formatItemList } from "../utils/formatter/index.js";
 export default class Room {
   constructor(
     readonly title: string,
-    readonly description: string,
+    public description: string,
     private exits: Set<Direction> = new Set<Direction>(),
     private items: Item[] = [],
   ) {}
@@ -30,6 +30,10 @@ export default class Room {
     );
 
     return foundItem || null;
+  }
+
+  public has(itemName: string): boolean {
+    return this.getItem(itemName) !== null;
   }
 
   public removeItem(itemAdd: Item): void {

@@ -72,8 +72,28 @@ async function endGame(message: string): Promise<void> {
 async function applyRules(): Promise<void> {
   const redRoom = Level.getRoom(0, 0);
   const blueRoom = Level.getRoom(1, 0);
-  if (redRoom.getItem("red") !== null && blueRoom.getItem("blue") !== null) {
-    await endGame("Congratulations! You know how to match colors! You won!");
+  const greenRoom = Level.getRoom(1, 1);
+  const yellowRoom = Level.getRoom(0, 1);
+
+  if (Player.moves.value > 15) {
+    await endGame("You are too slow and old! Game over!");
+  }
+
+  if (
+    redRoom.has("red ball") &&
+    blueRoom.has("blue ball") &&
+    greenRoom.has("green ball") &&
+    yellowRoom.has("yellow ball")
+  ) {
+    await endGame(
+      "Congratulations! You know how to match colors and open doors! You won!",
+    );
+  }
+
+  if (Player.has("key 1") && Player.has("key 2")) {
+    redRoom.addExit("south");
+    redRoom.description = "You just entered the red room.";
+    yellowRoom.addExit("north");
   }
 }
 

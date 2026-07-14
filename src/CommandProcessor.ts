@@ -53,8 +53,8 @@ export function showHelp(): void {
   TextBuffer.add("exit");
   TextBuffer.add("move [north, south, east, west]");
   TextBuffer.add("look");
-  TextBuffer.add("pickup");
-  TextBuffer.add("drop");
+  TextBuffer.add("pickup [item name]");
+  TextBuffer.add("drop [item name]");
   TextBuffer.add("inventory");
   TextBuffer.add("whereami");
 }

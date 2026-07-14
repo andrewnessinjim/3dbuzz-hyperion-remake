@@ -6,11 +6,10 @@ import TextBuffer from "./TextBuffer.js";
 import type { Nullable } from "./types/index.js";
 import { formatItemList } from "./utils/formatter/index.js";
 
-
-export const position = { x: 0, y: 0 };
+const position = { x: 0, y: 0 };
 
 let inventory: Item[] = [];
-let moves = 0;
+const moves = { value: 0 };
 let weightCapacity = 6;
 
 function inventoryWeight(): number {
@@ -28,7 +27,7 @@ function move(direction: Direction): void {
     return;
   }
 
-  moves++;
+  moves.value++;
 
   switch (direction) {
     case "north":
@@ -99,6 +98,10 @@ function getInventoryItem(itemName: string): Item | null {
   return found || null;
 }
 
+function has(itemName: string): boolean {
+  return getInventoryItem(itemName) !== null;
+}
+
 export default {
   inventoryWeight,
   move,
@@ -107,4 +110,7 @@ export default {
   showInventory,
   getCurrentRoom,
   getInventoryItem,
+  has,
+  moves,
+  position
 };
