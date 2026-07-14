@@ -18,7 +18,7 @@ const rl = createInterface({
 
 while (!quit.value) {
   const userInput = await rl.question(chalk.bold("\n\nWhat shall I do?\n> "));
-  CommandProcessor.processCommand(userInput);
+  await CommandProcessor.processCommand(userInput);
 }
 
 rl.close();

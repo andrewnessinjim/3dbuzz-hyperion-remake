@@ -3,6 +3,7 @@ import { wordWrap } from "./utils/text/index.js";
 import Player from "./Player.js";
 import TextBuffer from "./TextBuffer.js";
 import { quit } from "./index.js";
+import * as Level from "./Level.js";
 
 function hideCursor(): void {
   process.stdout.write("\x1B[?25l");
@@ -60,15 +61,21 @@ function startGame(): void {
 }
 
 async function endGame(message: string): Promise<void> {
-  quit.value = true;
   console.clear();
   console.log(wordWrap(message));
   console.log("\nPress any key to close this window");
   hideCursor();
   await waitForKeyPress();
+  quit.value = true;
 }
 
-function applyRules(): void {}
+async function applyRules(): Promise<void> {
+  const redRoom = Level.getRoom(0, 0);
+  const blueRoom = Level.getRoom(1, 0);
+  if (redRoom.getItem("red") !== null && blueRoom.getItem("blue") !== null) {
+    await endGame("Congratulations! You know how to match colors! You won!");
+  }
+}
 
 export default {
   showTitleScreen,

@@ -6,7 +6,7 @@ import TextBuffer from "./TextBuffer.js";
 import GameManager from "./GameManager.js";
 import chalk from "chalk";
 
-export function processCommand(line: string): void {
+export async function processCommand(line: string): Promise<void> {
   const command = TextUtils.extractCommand(line.trim()).trim().toLowerCase();
   const argument = TextUtils.extractArguments(line.trim()).trim().toLowerCase();
 
@@ -43,7 +43,7 @@ export function processCommand(line: string): void {
       break;
   }
 
-  GameManager.applyRules();
+  await GameManager.applyRules();
   TextBuffer.show();
 }
 export function showHelp(): void {

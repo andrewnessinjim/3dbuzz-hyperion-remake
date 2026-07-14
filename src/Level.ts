@@ -6,16 +6,15 @@ let roomGrid!: Room[][];
 
 function buildLevel(): void {
   const redRoom = new Room("Red Room", "You just entered the red room.");
-  redRoom.addItem(
-    new Item(
-      "Eaten apple",
-      "looks like an half-eaten apple. It looks fresh. Someone was definitely enjoying this!",
-      2,
-    ),
-  );
+
+  const blueBall = new Item("Blue", "You just picked up a blue ball.");
+  redRoom.addItem(blueBall);
   redRoom.addExit("east");
 
   const blueRoom = new Room("Blue Room", "You have entered the blue room");
+  const redBall = new Item("Red", "You just picked up a red ball.");
+  blueRoom.addItem(redBall);
+
   blueRoom.addExit("west");
 
   roomGrid = [[redRoom, blueRoom]];
