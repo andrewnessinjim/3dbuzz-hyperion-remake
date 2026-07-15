@@ -10,37 +10,41 @@ export async function processCommand(line: string): Promise<void> {
   const command = TextUtils.extractCommand(line.trim()).trim().toLowerCase();
   const argument = TextUtils.extractArguments(line.trim()).trim().toLowerCase();
 
-  switch (command) {
-    case "exit":
-      quit.value = true;
-      return;
-    case "help":
-      showHelp();
-      break;
-    case "move":
-      if (isValidDirection(argument)) {
-        Player.move(argument);
-      }
-      break;
-    case "look":
-      Player.getCurrentRoom()?.describe();
-      break;
-    case "pickup":
-      Player.pickupItem(argument);
-      break;
-    case "drop":
-      Player.dropItem(argument);
-      break;
-    case "inventory":
-      Player.showInventory();
-      break;
-    case "whereami":
-      Player.getCurrentRoom()?.showTitle();
-      break;
-    default:
-      TextBuffer.add(chalk.red("Input not understood"));
-      showHelp();
-      break;
+  if (isValidDirection(command)) {
+    Player.move(command);
+  } else {
+    switch (command) {
+      case "exit":
+        quit.value = true;
+        return;
+      case "help":
+        showHelp();
+        break;
+      case "move":
+        if (isValidDirection(argument)) {
+          Player.move(argument);
+        }
+        break;
+      case "look":
+        Player.getCurrentRoom()?.describe();
+        break;
+      case "pickup":
+        Player.pickupItem(argument);
+        break;
+      case "drop":
+        Player.dropItem(argument);
+        break;
+      case "inventory":
+        Player.showInventory();
+        break;
+      case "whereami":
+        Player.getCurrentRoom()?.showTitle();
+        break;
+      default:
+        TextBuffer.add(chalk.red("Input not understood"));
+        showHelp();
+        break;
+    }
   }
 
   await GameManager.applyRules();
