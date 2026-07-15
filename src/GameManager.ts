@@ -45,7 +45,7 @@ async function showTitleScreen(): Promise<void> {
     ),
   );
   console.log(
-    "\nNOTE: You may type 'help' at any time to see a list of commands.",
+    wordWrap("\nNOTE: You may type 'help' at any time to see a list of commands."),
   );
   console.log("\nPress a key to begin.");
 
