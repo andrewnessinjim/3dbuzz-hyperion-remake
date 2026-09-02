@@ -75,9 +75,14 @@ function dropItem(itemName: string): void {
     return;
   }
 
+  if (!currentRoom) {
+    TextBuffer.add("There is no room to drop items into.");
+    return;
+  }
+
   inventory = inventory.filter((item) => item !== itemDrop);
-  currentRoom?.addItem(itemDrop);
-  TextBuffer.add("The " + itemName + " has been dropped into this room.");
+  currentRoom.addItem(itemDrop);
+  TextBuffer.add(itemDrop.dropText(currentRoom));
 }
 function showInventory(): void {
   const itemsText = formatItemList(inventory, "You inventory contains");
